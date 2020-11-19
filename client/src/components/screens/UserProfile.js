@@ -99,7 +99,7 @@ const UserProfile = () => {
             borderBottom: " 1px solid grey"
         }}>
         <div>
-            <img style={{ width: "160px", height: "160px", borderRadius: "80px" }}
+            <img style={{ width: "160px", height: "160px", borderRadius: "80px" }} 
                src={userProfile.user.pic}
             />
         </div>
@@ -115,7 +115,9 @@ const UserProfile = () => {
             </div>
             {showfollow?
                    <button style={{
-                       margin:"10px"
+                       margin:"10px",
+                       position:"relative",
+                       left:"65px"
                    }} className="btn waves-effect waves-light #64b5f6 blue darken-1"
                     onClick={()=>followUser()}
                     >
@@ -124,7 +126,9 @@ const UserProfile = () => {
                     : 
                     <button
                     style={{
-                        margin:"10px"
+                        margin:"10px",
+                       position:"relative",
+                       left:"55px"
                     }}
                     className="btn waves-effect waves-light #64b5f6 blue darken-1"
                     onClick={()=>unfollowUser()}
