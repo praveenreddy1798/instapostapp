@@ -1,14 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import {Link,useHistory, useParams} from 'react-router-dom'
 import M from "materialize-css"
-const EditPost = () => {
+const CreatePost = () => {
     const [body,setBody]=useState("")
     const [title,setTitle]=useState("")
     const [image,setImage]=useState("")
     const [url,setUrl]=useState("")
     const history=useHistory()
     const {postId} = useParams()
-    
     useEffect(()=>{
         if(url){
             fetch(`/editpost/${postId}`,
@@ -22,7 +21,6 @@ const EditPost = () => {
                 title,
                 body,
                 photo:url
-               
               })
               }) 
               .then(res=>res.json())
@@ -34,6 +32,7 @@ const EditPost = () => {
                   else{
                        M.toast({html:"successfully updated",classes:"#81c784 green lighten-2"})
                        history.push('/')
+                       
                     } 
               })
               .catch(err=>{
@@ -102,14 +101,4 @@ const EditPost = () => {
         </div>
     )
 }
-export default EditPost
-
-   
-   
-   
-   
-   
-   
-   
-   
-  
+export default CreatePost

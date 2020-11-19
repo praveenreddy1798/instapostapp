@@ -169,7 +169,7 @@ router.delete("/deletecomment/:postId/:comment_id", requireLogin, (req,res) => {
   });
 
   router.post('/editpost/:postId',(req,res) => {
-  const{title,body,photo} = req.body
+      const{title,body,photo}=req.body
     if(!title || !body || !photo ){
        return res.status(422).json({error:"Add required fields"})
     }
@@ -187,6 +187,7 @@ router.delete("/deletecomment/:postId/:comment_id", requireLogin, (req,res) => {
     }
 ) 
    
+
 
 
   
