@@ -7,7 +7,7 @@ const Post = mongoose.model("Post")
 router.get('/allposts',requireLogin,(req,res)=>{
     Post.find()
     .populate("postedBy","_id name pic")
-    .populate("comments.postedBy","_id name")
+    .populate("comments.postedBy","_id name pic")
     .sort('-createdAt')
     .then(posts=>{
         res.json({posts})
@@ -20,7 +20,7 @@ router.get('/allposts',requireLogin,(req,res)=>{
 router.get('/subscribedposts',requireLogin,(req,res)=>{
     Post.find({postedBy:{$in:req.user.following}})
     .populate("postedBy","_id name pic")
-    .populate("comments.postedBy","_id name")
+    .populate("comments.postedBy","_id name pic")
     .sort('-createdAt')
     .then(posts=>{
         res.json({posts})
@@ -54,7 +54,7 @@ router.post('/createpost',requireLogin,(req,res) => {
 })
 router.get('/mypost',requireLogin,(req,res)=>{
     Post.find({postedBy:req.user._id})
-    .populate("PostedBy","_id name")
+    .populate("PostedBy","_id name pic")
     .then(mypost=>{
         res.json({mypost})
     })
@@ -70,8 +70,8 @@ router.put('/like',requireLogin,(req,res)=>{
         new:true,
 
     })
-    .populate("postedBy","_id name")
-    .populate("comments.postedBy","_id name")
+    .populate("postedBy","_id name pic")
+    .populate("comments.postedBy","_id name pic")
     .exec((err,result)=>{
         if(err){
             return res.status(422).json({error:err})
@@ -89,8 +89,8 @@ router.put('/unlike',requireLogin,(req,res)=>{
         new:true,
 
     })
-    .populate("postedBy","_id name")
-    .populate("comments.postedBy","_id name")
+    .populate("postedBy","_id name pic")
+    .populate("comments.postedBy","_id name pic")
     .exec((err,result)=>{
         if(err){
             return res.status(422).json({error:err})
@@ -114,8 +114,8 @@ router.put('/comment',requireLogin,(req,res)=>{
         new:true,
 
     })
-    .populate("comments.postedBy","_id name")
-    .populate("postedBy","_id name")
+    .populate("postedBy","_id name pic")
+    .populate("comments.postedBy","_id name pic")
     .exec((err,result)=>{
         if(err){
             return res.status(422).json({error:err})
@@ -155,8 +155,8 @@ router.delete("/deletecomment/:postId/:comment_id", requireLogin, (req,res) => {
         new: true, 
       }
     )
-      .populate("comments.postedBy", "_id name")
-      .populate("postedBy", "_id name ")
+    .populate("postedBy","_id name pic")
+    .populate("comments.postedBy","_id name pic")
       .exec((err, postComment) => {
         if (err || !postComment) {
           return res.status(422).json({ error: err });

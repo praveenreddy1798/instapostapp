@@ -171,7 +171,7 @@ const deleteComment = (postid, commentid) => {
                                 item.comments.map(record=>{
                                     return(
                                         <h6 key={record._id}><span style={{fontWeight:500}}>{record.postedBy.name}</span> {record.text}  {record.postedBy._id === state._id &&
-                                            <i className="material-icons" style={{float:"right"}} onClick={()=>{deleteComment(item._id,record._id)}} >delete</i> }</h6>
+                                            <i className="material-icons" style={{position:"absolute",right:"10px"}} onClick={()=>{deleteComment(item._id,record._id)}} >delete</i> }</h6>
                                     )
                                     
                                 })

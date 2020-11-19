@@ -75,6 +75,7 @@ const CreatePost = () => {
 
     return (
         <div className="card create-card input-field">
+            <h2>Create Post</h2>
             <input
              type="text"
             placeholder="title" 

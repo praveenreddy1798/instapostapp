@@ -76,7 +76,7 @@ const EditPost = () => {
 
     return (
         <div className="card create-card input-field">
-            <h5>Update Post</h5>
+            <h2>Update Post</h2>
             <input
              type="text"
             placeholder="title" 
