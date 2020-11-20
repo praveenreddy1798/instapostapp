@@ -7,6 +7,7 @@ const CreatePost = () => {
     const [image,setImage]=useState("")
     const [url,setUrl]=useState("")
     const history=useHistory()
+
     
     useEffect(()=>{
         if(url){
@@ -32,7 +33,6 @@ const CreatePost = () => {
                   else{
                        M.toast({html:"successfully posted",classes:"#81c784 green lighten-2"})
                        history.push('/')
-                       
                     } 
               })
               .catch(err=>{

@@ -142,9 +142,7 @@ const deleteComment = (postid, commentid) => {
                         <h5 style={{padding:"8px",position:"relative",left:"60px",top:"5px"}}><Link to = {item.postedBy._id != state._id ?'/profile/'+item.postedBy._id:'/profile' }>{item.postedBy.name}</Link> 
                          </h5>
                          {item.postedBy._id == state._id &&
-                        <i className="material-icons" style={{position:"absolute",right:"50px",top:"10px"}}>
-                            <Link to = {'/editpost/'+item._id }>edit</Link>
-                            </i> }
+                        <i className="material-icons" style={{position:"absolute",right:"50px",top:"10px"}}><Link to = {'/editpost/'+item._id }>edit</Link></i> }
                          {item.postedBy._id == state._id &&
                         <i className="material-icons" style={{position:"absolute",right:"10px",top:"10px"}} onClick={()=>{deletePost(item._id)}} >delete</i> }
                           </div>
